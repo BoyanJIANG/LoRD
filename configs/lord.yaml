@@ -1,0 +1,11 @@
+data:
+  dataset_folder: dataset
+  length_sequence: 17
+  training_samples: 10000
+model:
+  in_dim: 4
+  latent_dim: 128
+training:
+  out_dir: out/lord
+  part_size: 0.05  # only supports part_size=0.05 currently
+  lr: 0.001

@@ -1,0 +1,12 @@
+Cython==0.29.24
+scipy==1.4.1
+plyfile==0.7.4
+PyYAML==5.4.1
+smplx==0.1.28
+tensorboardX==2.5
+tqdm==4.63.1
+trimesh==3.10.7
+networkx==2.2
+opencv-python==4.5.3.56
+PyMCubes==0.1.2
+protobuf==3.18.0
