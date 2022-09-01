@@ -89,6 +89,14 @@ python reconstruct.py lord \
 --seq_name 00134_longlong_twist_trial2_21
 ```
 
+We provide the rendered depth images in the demo data, you can
+render your own meshes by using `scripts/render.py`, for example:
+```
+python scripts/render.py \
+-i dataset/02474_longshort_ROM_lower_258/mesh
+```
+The depth images will be saved to the input mesh folder by default.
+
 **Note**: We only provide meshes without texture information due to 
 data copyright considerations. The [CAPE raw scan](https://cape.is.tue.mpg.de/download.php) with texture 
 is available upon request. If you have colored point clouds, please 
@@ -110,6 +118,8 @@ python generate_mesh.py lord \
 --pcl_type depth_pcl \
 --seq_name 00134_longlong_twist_trial2_21
 ```
+The generated meshes are saved to the folder
+`out/lord/<exp_name>/vis`
 
 
 ### Inner Body Refinement
@@ -144,7 +154,17 @@ python reconstruct.py lord \
 --smpl_refine
 ```
 
-The optimization results will be saved in `out/lord/fit_depth_pcl_h4d_pose_refine`.
+4. Generate mesh sequence from the optimized latent codes.
+```
+python generate_mesh.py lord \
+--pcl_type depth_pcl \
+--exp_name fit_depth_pcl_h4d_pose_refine \
+--seq_name 02474_longshort_ROM_lower_258 \
+--use_h4d_smpl
+```
+The generated meshes are saved to the folder
+`out/lord/fit_depth_pcl_h4d_pose_refine/vis/02474_longshort_ROM_lower_258`
+
 
 
 
