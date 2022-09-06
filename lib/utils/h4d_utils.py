@@ -84,7 +84,7 @@ class Prior(object):
         else:
             import pickle as pkl
             # Load pre-computed mean and variance
-            dat = pkl.load(open('/home/add_disk/jiangboyan/proj/cloth4d/data/pose_prior.pkl', 'rb'))
+            dat = pkl.load(open('data/pose_prior.pkl', 'rb'))
             self.priors = {'Generic': th_Mahalanobis(dat['mean'],
                                                      dat['precision'],
                                                      self.prefix)}

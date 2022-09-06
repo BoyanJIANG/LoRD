@@ -5,12 +5,10 @@ import numpy as np
 from os.path import join
 import time
 import argparse
-from torch.nn import functional as F
 from smplx import SMPL
 import trimesh
 import datetime
 from trimesh.exchange.export import export_mesh
-from human_body_prior.tools.omni_tools import copy2cpu as c2c
 
 from lib.utils import SmoothedValue
 from lib.utils.h4d_utils import Prior, get_loss_weights, backward_step, compute_p2s_loss
@@ -126,7 +124,7 @@ def back_optim(mesh_dir, device, code_std=0.01, num_iterations=500):
         if (step + 1) % 100 == 0:
             # -----------visualization-------------
             for i, v in enumerate(v1):
-                body_mesh = trimesh.Trimesh(vertices=c2c(v), faces=faces, process=False)
+                body_mesh = trimesh.Trimesh(vertices=v.detach().cpu().numpy(), faces=faces, process=False)
                 export_mesh(body_mesh, os.path.join(mesh_dir, f'{i:04d}.ply'))
 
             # -----------save codes-------------
